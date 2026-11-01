@@ -1,0 +1,61 @@
+:root {
+  --bg: #08111b;
+  --panel: #0f1c2b;
+  --line: rgba(140, 190, 230, 0.16);
+  --text: #e8f3ff;
+  --muted: #8aa0b8;
+  --alert: #3dd68c;
+  --low: #e7c04b;
+  --drowsy: #f08a3a;
+  --high: #ff4d4f;
+  --accent: #4cc9f0;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: radial-gradient(circle at top, #14314a, var(--bg) 46%); color: var(--text); font-family: "Segoe UI", sans-serif; }
+.app { max-width: 1280px; margin: 0 auto; padding: 24px; }
+.topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin: 0 0 6px; font-size: 12px; }
+h1 { margin: 0; font-size: 28px; }
+.subtitle { color: var(--muted); margin: 8px 0 0; }
+.connection { border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 8px 14px; font-size: 13px; }
+.layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr); gap: 20px; }
+.stage, .dashboard, .status-card, .gauge-card, .info-card { background: rgba(15, 28, 43, 0.92); border: 1px solid var(--line); border-radius: 18px; }
+.stage { padding: 16px; }
+.video-wrap { position: relative; background: #000; border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 3; }
+video, canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.video-meta { position: absolute; left: 12px; bottom: 12px; display: flex; gap: 8px; }
+.video-meta span { background: rgba(0, 0, 0, 0.55); border-radius: 999px; padding: 4px 10px; font-size: 12px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+button { border: 0; border-radius: 10px; padding: 10px 14px; background: #1c334c; color: var(--text); cursor: pointer; font-weight: 600; }
+button.primary { background: linear-gradient(90deg, #2a9d8f, #4cc9f0); color: #062017; }
+button.ghost { background: transparent; border: 1px solid var(--line); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.banner { margin-top: 12px; padding: 12px 14px; border-radius: 12px; font-weight: 700; }
+.banner.hidden { display: none; }
+.banner.level-1 { background: rgba(231, 192, 75, 0.18); color: var(--low); }
+.banner.level-2 { background: rgba(240, 138, 58, 0.2); color: var(--drowsy); }
+.banner.level-3 { background: rgba(255, 77, 79, 0.22); color: #ffd4d4; animation: pulse 1s infinite; }
+.banner.uncertain { background: rgba(76, 201, 240, 0.12); color: var(--accent); }
+.dashboard { padding: 16px; display: grid; gap: 12px; }
+.status-card, .gauge-card, .info-card { padding: 14px; }
+.label { margin: 0; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+#driverState { margin: 6px 0; font-size: 32px; }
+.status-alert { box-shadow: inset 0 0 0 2px var(--alert); }
+.status-low { box-shadow: inset 0 0 0 2px var(--low); }
+.status-drowsy { box-shadow: inset 0 0 0 2px var(--drowsy); }
+.status-high { box-shadow: inset 0 0 0 2px var(--high); }
+.status-uncertain { box-shadow: inset 0 0 0 2px var(--accent); }
+.gauge { height: 12px; background: #132233; border-radius: 999px; overflow: hidden; margin: 10px 0; }
+.gauge-fill { height: 100%; width: 0%; background: var(--alert); transition: width 0.2s ease, background 0.2s ease; }
+.score { margin: 0; font-size: 28px; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.metrics div { background: #112233; border-radius: 12px; padding: 10px; }
+.metrics span { display: block; color: var(--muted); font-size: 11px; }
+.metrics strong { font-size: 18px; }
+.info-card p:last-child { margin-bottom: 0; color: #c9d8e8; line-height: 1.45; }
+@keyframes pulse { 50% { filter: brightness(1.25); } }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  h1 { font-size: 22px; }
+}
